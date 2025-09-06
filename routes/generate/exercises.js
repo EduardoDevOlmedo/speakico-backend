@@ -41,11 +41,8 @@ export async function generateExercises(req, res) {
     - There must be exactly 2 semicolons in the output.
     `.trim();
 
-    console.log(prompt);
-
     try {
         const { phrases, audioUrls } = await generateContent(prompt, level, user.id, user.targetLanguage);
-        console.log(phrases);
         await prisma.user.update({
             where: { id: user.id },
             data: {
