@@ -1,18 +1,18 @@
 # Use Node.js LTS
 FROM node:18
 
-# Create app directory
 WORKDIR /usr/src/app
 
-# Copy package.json and install dependencies
+# Copy dependencies
 COPY package*.json ./
 RUN npm install --production
 
-# Copy the rest of the app
+# Copy app code
 COPY . .
 
-# Expose port (Cloud Run will set $PORT)
-EXPOSE 4000
+# Optional: document the port your app listens on
+ENV PORT 8080
+EXPOSE 8080
 
 # Start the app
 CMD ["npm", "start"]

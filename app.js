@@ -21,7 +21,7 @@ dotenv.config();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Servidor de prueba funcionando");
+  res.send("HEALTHCHECK: SERVER IS RUNNING");
 });
 
 app.use("/auth", userRoutes);
@@ -29,4 +29,5 @@ app.use("/generate", verifyToken, generateRoutes);
 //expose public urls served from the backend to be consumed by frontend
 app.use('/audios', express.static(path.join(__dirname, 'output_audio')));
 
-app.listen(4000, () => console.log("Servidor de prueba en puerto 4000"));
+const PORT = process.env.PORT || 4000; 
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
