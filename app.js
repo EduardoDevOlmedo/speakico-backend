@@ -13,9 +13,11 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 app.use(cors({
-  origin: ["http://localhost:3000", "http://192.168.1.23:3000"],
+  origin: ["http://localhost:3000", "https://speakico-front-itj9.vercel.app"],
   credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 }));
+
 dotenv.config();
 
 app.use(express.json());
@@ -29,5 +31,5 @@ app.use("/generate", verifyToken, generateRoutes);
 //expose public urls served from the backend to be consumed by frontend
 app.use('/audios', express.static(path.join(__dirname, 'output_audio')));
 
-const PORT = process.env.PORT || 4000; 
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

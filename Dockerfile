@@ -1,16 +1,18 @@
-# Use Node.js LTS
 FROM node:18
 
 WORKDIR /usr/src/app
 
-# Copy dependencies
+# Copy package.json and package-lock.json
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install --production
 
-# Copy app code
+# Copy everything else
 COPY . .
 
-# Optional: document the port your app listens on
+
+# Expose the port Cloud Run expects
 ENV PORT 8080
 EXPOSE 8080
 

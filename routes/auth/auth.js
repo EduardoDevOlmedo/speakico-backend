@@ -41,7 +41,11 @@ export const createUser = async (req, res) => {
     const token = generateToken(user);
 
     res.status(201)
-      .cookie("token", token, { httpOnly: false, secure: true, maxAge: 30 * 24 * 60 * 60 * 1000 })
+    res.cookie("token", token, {
+      secure: true,
+      sameSite: "None",
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    })
       .json({
         message: "Usuario creado", user: {
           token: token,
