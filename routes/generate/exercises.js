@@ -91,7 +91,7 @@ async function generateContent(promptText, level, userId) {
 
     if (!res.ok) {
         const errorText = await res.text();
-        throw new Error(`Error en la API de ElevenLabs: ${errorText}`);
+        throw new Error(`Error en la API de GoogleGemini: ${errorText}`);
     }
 
     const data = await res.json();
