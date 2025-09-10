@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 app.use(cors({
-  origin: ["http://localhost:3000", "https://speakico-front-itj9.vercel.app"],
+  origin: ["http://localhost:3000", "https://speakico.vercel.app"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 }));
