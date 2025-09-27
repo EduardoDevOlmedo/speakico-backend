@@ -47,6 +47,7 @@ export const login = async (req, res) => {
           name: user.name,
           interests: user.interests,
           level: user.level,
+          prevFeedback: user.prevFeedback ?? "",
           avgSuccessRate: user.avgSuccessRate ?? 0,
           totalAttempts: user.totalAttempts ?? 0,
           audioSuccessRate: user.audioSuccessRate ?? 0,
